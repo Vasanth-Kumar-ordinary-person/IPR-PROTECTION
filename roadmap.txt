@@ -1,0 +1,114 @@
+Here’s an updated roadmap that incorporates IPFS, Remix, Ganache, MySQL, and MetaMask. These adjustments will better fit your preferences while maintaining the goal of creating a blockchain-based patent protection and ownership platform.
+
+---
+
+### **Phase 1: Project Planning and Architecture**
+
+1. **Define Features and Data Flow**
+   - Map out the required features, including viewing patent counts for unregistered users, filing patents, tracking status, and role-based access.
+   - Design data flows between MySQL (for user and patent data), IPFS (for patent files), and blockchain contracts (for ownership and status).
+
+2. **Define Technology Stack**
+   - **Frontend**: React for UI, MetaMask for wallet connection.
+   - **Backend**: Node.js server for APIs and email notifications.
+   - **Database**: MySQL for managing users, patents, and roles.
+   - **Blockchain**: Ganache for local testing and Remix for smart contract development.
+   - **File Storage**: IPFS for decentralized storage of patent documentation.
+
+---
+
+### **Phase 2: MySQL Database and Role Management**
+
+1. **Set Up MySQL Database**
+   - **Users Table**: Store user information, roles (user/patent officer), and contact details.
+   - **Patents Table**: Store patent metadata, status, document IPFS hash, and owner info.
+
+2. **Define Role-Based Access Control (RBAC)**
+   - Configure backend middleware to manage access based on user roles:
+     - Users can file patents and view status.
+     - Patent officers can view all requests and update statuses.
+
+---
+
+### **Phase 3: Smart Contract Development in Remix**
+
+1. **Develop and Test Smart Contracts**
+   - **Patent Contract**: Use Remix to build an ERC721 or custom contract for patent representation.
+   - **Role-Specific Functions**: Add functions allowing only designated patent officers to update statuses.
+   - **Metadata Storage**: Include fields for patent details, linking to IPFS hashes for documentation.
+
+2. **Deploy and Test Contracts on Ganache**
+   - Deploy contracts locally on Ganache for initial testing.
+   - Test core functions: patent registration, status updates, and querying patent counts.
+
+3. **Connect with MetaMask**
+   - Ensure contracts are compatible with MetaMask for easy wallet interaction.
+   - Test MetaMask integration with Ganache to simulate real transactions.
+
+---
+
+### **Phase 4: Backend Development with Email Integration**
+
+1. **Set Up Node.js API and Email Service**
+   - Create a Node.js backend to handle requests, database operations, and email notifications (use NodeMailer or an email API).
+   - Define endpoints for key actions:
+     - Patent filing (includes uploading documents to IPFS)
+     - Status updates (triggers email notifications)
+     - User-specific patent retrieval and count viewing.
+
+2. **Integrate IPFS for Document Storage**
+   - Add functionality for uploading patent documents to IPFS and storing IPFS hashes in MySQL.
+   - Configure IPFS to enable retrieval of patent documents via their CIDs.
+
+3. **Email Notifications**
+   - Send confirmation emails upon patent submission.
+   - Notify users when their patent status is updated.
+
+---
+
+### **Phase 5: Frontend Development**
+
+1. **User Authentication and MetaMask Connection**
+   - Set up user registration and login forms with role-based access.
+   - Connect MetaMask to handle blockchain interactions for users.
+
+2. **Develop Role-Based Dashboards**
+   - **User Dashboard**: Display registered patents, filing status, and allow new filings.
+   - **Patent Officer Dashboard**: Show all pending patent requests with the ability to update status.
+
+3. **Patent Count Display for Unregistered Users**
+   - Create a public view that shows the current number of registered patents by querying data from the blockchain.
+
+4. **File Patent Form with IPFS and MetaMask Integration**
+   - Implement a form for filing patents, uploading documents to IPFS, and triggering blockchain transactions via MetaMask.
+
+---
+
+### **Phase 6: System Integration and Testing**
+
+1. **Test API, Blockchain, and Database Integration**
+   - Test contract interactions with MySQL, IPFS, and frontend components.
+   - Verify email notifications and check that they trigger appropriately for each status update.
+
+2. **Conduct Role-Based Access Testing**
+   - Ensure users can only access their patents, while patent officers can view and update all patents.
+
+3. **Perform Security and Performance Testing**
+   - Validate the security of MetaMask transactions, smart contract interactions, and data storage on IPFS.
+   - Optimize API and database interactions to ensure smooth user experience.
+
+---
+
+### **Phase 7: Deployment and Monitoring**
+
+1. **Prepare for Deployment**
+   - Deploy Node.js backend on a server (e.g., AWS or Heroku) and MySQL in the cloud for reliable data management.
+   - Host the React frontend on Vercel, Netlify, or another deployment platform.
+
+2. **Launch and Monitor System Performance**
+   - Set up tools to monitor server health, email delivery, and contract events.
+   - Collect user feedback and iterate on functionality as needed.
+
+---
+
+This roadmap covers all the necessary steps to create a platform that meets your requirements, complete with user role management, IPFS integration, MetaMask support, and MySQL for data persistence. Let me know if there’s anything more specific you’d like to add!
